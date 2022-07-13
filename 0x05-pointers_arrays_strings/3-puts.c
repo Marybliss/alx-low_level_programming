@@ -10,11 +10,11 @@
 
 void _puts(char *str)
 {
-int i; // positions of each string
-for ( i = 0; str[i] != '\0' ; i++)
+int i = 0;
+while (*(str + i))
 {
-_putchar(str[i]);
+_putchar(*(str + i));
+i++;
 }
 _putchar('\n');
-// puts(str);
 }
