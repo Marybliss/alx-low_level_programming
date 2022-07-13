@@ -2,13 +2,14 @@
 #include <stdio.h>
 
 /**
- * print_array - prints n elements of an array of integers
- * @a: first pointer
- * @n: second pointer
- * Return: Always 0.
+ * print_array - prints n elements of an array of integers.
+ * @a: first pointer.
+ * @n: number of array elements.
+ *
+ * Return: void.
  */
 
-void int_array(int *a, int n)
+void print_array(int *a, int n)
 {
 int i;
 for ( i = 0; i < n; i++)
