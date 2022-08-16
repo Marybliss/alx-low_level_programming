@@ -3,31 +3,41 @@
 
 /**
  * find_listint_loop - finds the loop in a linked list.
- * @head: pointer to the beginning of the list
+ * @head: head of a list.
  *
- * Return: address of the node where the loop starts or NULL if there's no loop
+ * Return: the address of the node where the loop starts.
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *p, *hare;
+	listint_t *p2;
+	listint_t *preview;
 
-	p = hare = head;
-	while (p && hare && hare->next)
+	p2 = head;
+	preview = head;
+	while (head && p2 && p2->next)
 	{
-		p = tortoise->next;
-		hare = hare->next->next;
-		if (p == hare)
+		head = head->next;
+		p2 = p2->next->next;
+
+		if (head == p2)
 		{
-			p = head;
-			break;
+			head = preview;
+			preview =  p2;
+			while (1)
+			{
+				p2 = preview;
+				while (p2->next != head && p2->next != preview)
+				{
+					p2 = p2->next;
+				}
+				if (p2->next == head)
+					break;
+
+				head = head->next;
+			}
+			return (p2->next);
 		}
 	}
-	if (!p || !hare || !hare->next)
-		return (NULL);
-	while (p != hare)
-	{
-		p = p->next;
-		hare = hare->next;
-	}
-	return (hare);
+
+	return (NULL);
 }
